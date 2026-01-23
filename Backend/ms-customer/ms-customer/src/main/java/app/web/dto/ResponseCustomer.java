@@ -2,7 +2,6 @@ package app.web.dto;
 
 import java.time.LocalDate;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +17,7 @@ public class ResponseCustomer {
 
     private Long idCustomer;
     private String name;
-    private String lastName;  
+    private String lastName;
     private String phoneNumber;
     private String documentType;
     private String documentNumber;
@@ -27,7 +26,7 @@ public class ResponseCustomer {
     private LocalDate birthDate;
     private Long age;
     private LocalDate dateCreation;
+    private String status;
     private ResponseCity city;
-    
 
 }

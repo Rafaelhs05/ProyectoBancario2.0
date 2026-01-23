@@ -24,11 +24,10 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCountry;
-    
+
     private String name;
 
-    @Column(length = 3 , unique = true)
+    @Column(length = 3, unique = true)
     private String isoCode;
-    
 
 }
