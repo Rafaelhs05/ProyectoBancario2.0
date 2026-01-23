@@ -20,16 +20,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "cities") 
+@Table(name = "cities")
 public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCity;
+
     private String name;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_country")
     private Country Country;
-
 
 }

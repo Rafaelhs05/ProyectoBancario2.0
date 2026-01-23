@@ -4,23 +4,13 @@ import java.util.List;
 
 import org.apache.hc.core5.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import app.application.service.ServiceCustomer;
 import app.web.dto.RequestCustomer;
 import app.web.dto.ResponseCity;
 import app.web.dto.ResponseCustomer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
-
-
-
-
 
 @RequiredArgsConstructor
 @RestController
@@ -29,14 +19,14 @@ public class ControllerCustomer {
 
     private final ServiceCustomer serviceCustomer;
 
-    @GetMapping() 
-    public ResponseEntity<List<ResponseCustomer>> listaCliente(){
+    @GetMapping()
+    public ResponseEntity<List<ResponseCustomer>> listaCliente() {
 
         return ResponseEntity.ok().body(serviceCustomer.obtenerTodosLosCustomers());
 
     }
 
-    @GetMapping("/{dni}")
+    @GetMapping("/dni/{dni}")
     public ResponseEntity<ResponseCustomer> clientePorDni(@PathVariable String dni) {
 
         return ResponseEntity.ok().body(serviceCustomer.obtenerCustomerPorDni(dni));
@@ -57,23 +47,25 @@ public class ControllerCustomer {
 
     }
 
-
     @PostMapping()
     public ResponseEntity<ResponseCustomer> nuevoCliente(@RequestBody RequestCustomer requestCustomer) {
-    
+
         return ResponseEntity.status(HttpStatus.SC_CREATED).body(serviceCustomer.nuevoCustomer(requestCustomer));
-    
+
     }
 
     @PutMapping()
     public ResponseEntity<ResponseCustomer> actualizarCliente(@RequestBody RequestCustomer requestCustomer) {
-        
+
         return ResponseEntity.ok().body(serviceCustomer.actualizarCustomer(requestCustomer));
 
     }
-    
-    
-    
-    
+
+    @DeleteMapping("/{idcliente}")
+    public ResponseEntity<ResponseCustomer> eliminarCliente(@PathVariable Long idCliente) {
+
+        return ResponseEntity.ok().body(serviceCustomer.eliminarCustomer(idCliente));
+
+    }
 
 }

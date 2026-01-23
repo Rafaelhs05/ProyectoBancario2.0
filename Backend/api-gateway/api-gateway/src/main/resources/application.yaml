@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: ms-auth
+              uri: lb://ms-auth
+              predicates:
+                - Path=/auth/**
+            - id: ms-user
+              uri: lb://ms-user
+              predicates:
+                - Path=/user/**
+              filters:
+                - name: JwtAuthentication
+                  args:
+                    publicGetPaths: 
+                      - "/user/username/" 
+            - id: ms-customer
+              uri: lb://ms-customer
+              predicates:
+                - Path=/customer/**
+              filters:
+                - name: JwtAuthentication
+                  args:
+                    publicGetPaths: 
+                      - "/customer/city" 
+                      - "/customer/dni" 
+
+            - id: ms-account
+              uri: lb://ms-account
+              predicates:
+                - Path=/account/**
+              filters:
+                - name: JwtAuthentication
+                  args:
+                    publicGetPaths: 
+                      - "/account/accountNumber" 
+            - id: ms-transaction
+              uri: lb://ms-transaction
+              predicates:
+                - Path=/transaction/**
+              filters:
+                - JwtAuthentication
+            - id: ms-motion 
+              uri: lb://ms-motion
+              predicates:
+                - Path=/motion/**
+              filters:
+                - JwtAuthentication
+
+              
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET}

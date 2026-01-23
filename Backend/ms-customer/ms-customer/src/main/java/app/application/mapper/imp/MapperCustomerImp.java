@@ -1,6 +1,5 @@
 package app.application.mapper.imp;
 
-
 import org.springframework.stereotype.Component;
 import app.application.mapper.MapperCustomer;
 import app.domain.model.City;
@@ -27,25 +26,27 @@ public class MapperCustomerImp implements MapperCustomer {
                 .birthDate(requestCustomer.getBirthDate())
                 .age(requestCustomer.getAge())
                 .dateCreation(requestCustomer.getDateCreation())
+                .status(requestCustomer.getStatus())
                 .city(city)
                 .build();
     }
 
     @Override
-    public ResponseCustomer toDto(Customer customer , ResponseCity cityDto) {
-        
+    public ResponseCustomer toDto(Customer customer, ResponseCity cityDto) {
+
         return ResponseCustomer.builder()
                 .idCustomer(customer.getIdCustomer())
                 .name(customer.getName())
                 .lastName(customer.getLastName())
                 .phoneNumber(customer.getPhoneNumber())
-                .documentType(customer.getDocumentType())
+                .documentType(customer.getDocumentType().toString())
                 .documentNumber(customer.getDocumentNumber())
                 .email(customer.getEmail())
                 .address(customer.getAddress())
                 .birthDate(customer.getBirthDate())
                 .age(customer.getAge())
                 .dateCreation(customer.getDateCreation())
+                .status(customer.getStatus().toString())
                 .city(cityDto)
                 .build();
     }
@@ -56,7 +57,7 @@ public class MapperCustomerImp implements MapperCustomer {
                 .idCity(city.getIdCity())
                 .name(city.getName())
                 .countryName(country.getName())
-                .build();       
+                .build();
     }
 
 }

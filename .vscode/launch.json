@@ -19,7 +19,76 @@
             "mainClass": "app.MsCustomerApplication",
             "projectName": "ms-customer",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=51061 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ms-customer"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsAccountApplication<ms-account>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.app.MsAccountApplication",
+            "projectName": "ms-account",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=57845 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ms-account"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsMotionApplication<ms-motion>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "app.MsMotionApplication",
+            "projectName": "ms-motion",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsUserApplication<ms-user>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "app.MsUserApplication",
+            "projectName": "ms-user",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsTransferApplication<ms-transfer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "app.MsTransferApplication",
+            "projectName": "ms-transfer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayApplication<api-gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "app.ApiGatewayApplication",
+            "projectName": "api-gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "JWT_SECRET": "secretkey_secretkey_secretkey_secretkey_secretkey_12345"
+            },
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=55461 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=api-gateway"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsAuthApplication<ms-auth>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "app.auth.MsAuthApplication",
+            "projectName": "ms-auth",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "JWT_SECRET": "secretkey_secretkey_secretkey_secretkey_secretkey_12345"
+            },
         }
     ]
 }
