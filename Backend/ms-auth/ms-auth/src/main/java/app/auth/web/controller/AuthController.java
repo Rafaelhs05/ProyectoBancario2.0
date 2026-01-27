@@ -1,8 +1,10 @@
-package app.auth.controller;
+package app.auth.web.controller;
 
-import app.auth.model.RequestLogin;
-import app.auth.service.AuthService;
+import app.auth.application.service.AuthService;
+import app.auth.web.dto.RequestLogin;
+import app.auth.web.dto.ResponseToken;
 import lombok.RequiredArgsConstructor;
+import org.apache.hc.core5.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +19,9 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody RequestLogin request) {
-        String token = authService.login(
-                request.getUsername(),
-                request.getPassword());
-        return ResponseEntity.ok(token);
+    public ResponseEntity<ResponseToken> login(@RequestBody RequestLogin request) {
+
+        return ResponseEntity.status(HttpStatus.SC_CREATED)
+                .body(authService.login(request.getUsername(), request.getPassword()));
     }
 }

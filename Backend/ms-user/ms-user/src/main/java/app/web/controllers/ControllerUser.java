@@ -34,4 +34,10 @@ public class ControllerUser {
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceUser.newUser(requestUser));
     }
 
+    @PutMapping("/updateLastLogin/{username}")
+    public ResponseEntity<ResponseUser> updateLastLogin(@PathVariable("username") String username) {
+
+        return ResponseEntity.ok().body(serviceUser.updateLastLogin(username));
+    }
+
 }

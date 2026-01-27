@@ -25,8 +25,8 @@ public class ControllerAccounts {
     }
 
     // modificado
-    @GetMapping("/status")
-    public ResponseEntity<List<ResponseAccount>> ListAccounts(@RequestParam StateAccount status) {
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<ResponseAccount>> ListAccounts(@PathVariable StateAccount status) {
         return ResponseEntity.ok().body(serviceAccount.getAccountsStatusActive(status));
     }
 

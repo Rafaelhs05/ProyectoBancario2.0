@@ -11,6 +11,8 @@ import app.web.dto.RequestUser;
 import app.web.dto.ResponseUser;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +65,16 @@ public class ServiceUserImpl implements ServiceUser {
                 () -> new RuntimeException("El usuario no existe"));
 
         return mapperUser.toResponse(user);
+    }
+
+    @Override
+    public ResponseUser updateLastLogin(String username) {
+
+        UserCusto user = repositoryUser.findByUsername(username).orElseThrow(
+                () -> new RuntimeException("El usuario no existe"));
+
+        user.setLastLogin(LocalDateTime.now());
+        return mapperUser.toResponse(repositoryUser.save(user));
     }
 
 }
