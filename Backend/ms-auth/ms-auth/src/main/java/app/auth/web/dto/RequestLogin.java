@@ -1,21 +1,19 @@
-package app.auth.model;
-
-import java.time.LocalDateTime;
+package app.auth.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthUser {
+public class RequestLogin {
 
     private String username;
     private String password;
-    private String role;
-    private String status;
-    private LocalDateTime lastLogin;
+
 }

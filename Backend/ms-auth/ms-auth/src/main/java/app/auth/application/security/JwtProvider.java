@@ -1,4 +1,4 @@
-package app.auth.security;
+package app.auth.application.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -7,7 +7,9 @@ import jakarta.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import app.auth.model.AuthUser;
+
+import app.auth.web.dto.ResponseUser;
+
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,7 +29,7 @@ public class JwtProvider {
         secret = Keys.hmacShaKeyFor(secretString.getBytes());
     }
 
-    public String createToken(AuthUser authUser) {
+    public String createToken(ResponseUser authUser) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", authUser.getRole());
         claims.put("username", authUser.getUsername());

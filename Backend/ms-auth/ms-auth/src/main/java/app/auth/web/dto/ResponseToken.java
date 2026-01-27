@@ -1,4 +1,4 @@
-package app.auth.model;
+package app.auth.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RequestLogin {
+public class ResponseToken {
 
-    private String username;
-    private String password;
-
+    private String token;
 }
